@@ -1,0 +1,18 @@
+service: sls-app
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  environment:
+    REGION: ${self:provider.region}
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions: ${file(config/functions.yml)}

@@ -1,0 +1,6 @@
+greet:
+  handler: bin/greet
+  events:
+    - httpApi:
+        path: /greet
+        method: get
